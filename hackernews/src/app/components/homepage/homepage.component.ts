@@ -29,6 +29,11 @@ export class HomepageComponent implements OnInit {
   updateBookmarks() {
     const filtered = this.allArticles.filter(c => c.bookmarked);
     this.bookmarks = filtered.length;
+    if(this.showBookMarks) {
+      this.articles = this.allArticles.filter(c => c.bookmarked);
+    } else {
+      this.articles = this.allArticles.filter(c => c);
+    }
   }
 
   toggleBookMarks() {
