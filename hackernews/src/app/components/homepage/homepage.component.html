@@ -1,0 +1,44 @@
+<div class="header-box">
+    <div class="title"><i class="icofont-newspaper"></i> Hacker News</div>
+    <div class="bookmarks" [ngClass]="{'active': showBookMarks}" (click)="toggleBookMarks()"> Bookmarks <sup
+            *ngIf="bookmarks">{{bookmarks}}</sup></div>
+</div>
+<div class="articles">
+    <ul>
+        <li *ngFor="let article of articles | slice:0:10">
+            <div class="txt">
+                <div class="article-title">{{article.title}} -- {{article.author}} <i (click)="bookmarkMe(article)"
+                        [ngClass]="{'active': article.bookmarked}" class="icofont-heart" *ngIf="!showBookMarks"></i>
+                </div>
+                <div class="webpage" (click)="openWebpage(article.url)"><i class="icofont-external"></i> {{article.url}}
+                </div>
+                <div class="desc">{{article.description}} </div>
+
+            </div>
+            <h1 *ngIf="article.comments && article.comments.length"><i class="icofont-caret-down" (click)="article.show = !article.show; toggleComments(article)"></i>Comments</h1>
+            <div class="comment-box" *ngIf="article.comments && article.comments.length && article.show">
+                
+                <div *ngFor="let comment of article.comments | slice:article.start:article.end">
+                    <div class="user-name">{{comment.name}}
+                        <small>{{comment.time}}</small>
+                    </div>
+                    <div class="user-comment">{{comment.comment}}</div>
+
+                </div>
+             
+
+            </div>
+            <span class= "readmore" *ngIf="article.comments && article.comments.length && article.show" >
+                <label *ngIf="article.end === 2" (click) = "article.end = 1000">show more</label>
+                <label *ngIf="article.end !== 2" (click) = "article.end = 2">show less</label>
+            </span>
+        </li>
+    </ul>
+    <div *ngIf="showBookMarks && !(articles && articles.length)">No Articles found</div>
+</div>
+<div class="modal" *ngIf="webpage">
+    <div>
+        <h1><span (click)="closeWebpage()">Close</span></h1>
+        <iframe [attr.src]="webpage" *ngIf="webpage"></iframe>
+    </div>
+</div>

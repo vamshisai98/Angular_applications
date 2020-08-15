@@ -1,0 +1,140 @@
+
+ html,
+ body,
+ ul,
+ ol,
+ li,
+ p,
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+   margin: 0;
+   padding: 0;
+ }
+ html,
+ body {
+   height: calc(100% - 70px);
+   min-width: 1024px;
+   // max-width: 1280px;
+   user-select: none;
+   background: #f3f3f3;
+ }
+ body{
+  padding-top: 70px;
+
+ }
+ 
+ * {
+   margin: 0;
+   padding: 0;
+   font-family: 'Noto Sans KR', sans-serif;
+   outline: none;
+ }
+ 
+ ::-ms-clear {
+   display: none;
+ }
+ 
+ :read-only {
+   outline: none;
+ }
+ 
+ .clear {
+   clear: both;
+ }
+ 
+ i {
+   &.enabled {
+     cursor: pointer;
+     font-weight: 600;
+   }
+ }
+ 
+ .form-error {
+   float: left;
+   font-size: 12px;
+   padding: 2px 0px;
+   span {
+     display: block;
+   }
+ }
+ 
+ .white-bg {
+
+   padding: 0 !important;
+ }
+ 
+ .preview {
+   background: rgba(0, 142, 207, 0.1);
+   padding: 5px;
+   color: rgb(0, 142, 207);
+   i {
+     float: right;
+
+     font-size: 24px;
+     cursor: pointer;
+     margin-right: 5px;
+   }
+ }
+ 
+ .no-data {
+   position: relative;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   text-align: center;
+   width: 100px;
+   i {
+     font-size: 50px;
+     display: block;
+   }
+   label {
+     margin-top: 10px;
+     display: block;
+   }
+ }
+ .no-print {
+   display: block;
+ }
+ .print {
+   display: none;
+ }
+ 
+ .overflow-container {
+   position: relative;
+   .disabled {
+     position: absolute;
+     top: -15px;
+     left: 0;
+     height: calc(100% - 30px) !important;
+     width: calc(100% - 30px);
+     background: rgba(255,255,255,0.4) !important;
+   }
+ }
+ 
+ .cdk-overlay-container {
+   z-index: 100000;
+ }
+ 
+ @media print {
+   .no-print {
+     display: none;
+   }
+   .print {
+     display: block;
+   }
+   button,
+   i[class^="boschicon"] {
+     display: none !important;
+   }
+ }
+ 
+ @media (max-width: 1024px) {
+   html, body {    
+     min-width: 100%;
+   }
+ }
+ 
