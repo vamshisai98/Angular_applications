@@ -45,13 +45,11 @@ export class HomepageComponent implements OnInit {
       this.showBookMarks = false;
     }
   }
+
   openWebpage(url){
     this.webpage = this.sanitizer.bypassSecurityTrustResourceUrl(url); 
   }
-  closeWebpage() {
-    this.webpage = '';
-  }
-
+  
   toggleComments(article) {
     article.start = 0;
     article.end = 2;
